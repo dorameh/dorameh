@@ -1,0 +1,9 @@
+all: 1.o 1Main.o
+	gcc 1.o 1Main.o && rm *.o && ./a.out
+
+two_array.o: 1.c
+	gcc -c 1.c
+
+a_fscanf.o: 1Main.c
+	gcc -c 1Main.c
+	
