@@ -1,0 +1,362 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{graphicx}% LaTeX package to import graphics
+\graphicspath{{images/}} % configuring the graphicx package
+
+
+
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0,0,0.75}
+\definecolor{darkgreen}{rgb}{0,0.75,0}
+\usepackage[%pagebackref,
+colorlinks, linkcolor=darkblue,
+citecolor=darkgreen, urlcolor=blue, bookmarks=false, breaklinks]{hyperref}
+
+\usepackage{cmap}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+
+\usepackage{indentfirst}
+\usepackage[left=2.5cm, right=1.5cm, top=2cm, bottom=2cm]{geometry}
+\setlength\parindent{5ex}
+
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\chead{\thepage}
+	\renewcommand{\headrulewidth}{0pt}}
+\linespread{1.25}
+
+\usepackage{tocloft}
+\usepackage[ddmmyyyy]{datetime}
+
+\usepackage{titlesec}
+\titleformat{\section}[block]{\bfseries\large\centering}{\thesection}{1ex}{}
+\titleformat{\subsection}[block]{\bfseries\normalsize\centering}{\thesubsection}{1ex}{}
+
+\usepackage{amssymb, amsmath, amsthm, longtable, bbm}
+\usepackage[matrix, arrow, curve]{xy}
+
+\usepackage[geometry]{ifsym}
+
+\renewcommand{\square}{\text{\SmallSquare}}
+
+\binoppenalty=\maxdimen
+\relpenalty=\maxdimen
+
+\righthyphenmin=2
+\sloppy
+
+\newtheoremstyle{mytheoremstyle} % name
+{\topsep}                    % Space above
+{\topsep}                    % Space below
+{\itshape}                   % Body font
+{5ex}                           % Indent amount
+{\bfseries}                   % Theorem head font
+{.}                          % Punctuation after theorem head
+{.5em}                       % Space after theorem head
+{}  % Theorem head spec (can be left empty, meaning normal)
+
+\newtheoremstyle{myremarkstyle} % name
+{\topsep}                    % Space above
+{\topsep}                    % Space below
+{}                   % Body font
+{5ex}                           % Indent amount
+{\bfseries}                   % Theorem head font
+{.}                          % Punctuation after theorem head
+{.5em}                       % Space after theorem head
+{}  % Theorem head spec (can be left empty, meaning normal)
+\usepackage{titlesec}
+\titleformat{\section}[block]{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{3ex}{2ex}
+
+\theoremstyle{mytheoremstyle}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{corollary}[theorem]{Следствие}
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem*{conjecture}{Гипотеза}
+
+\theoremstyle{myremarkstyle}
+\newtheorem{remark}[theorem]{Замечание}
+\newtheorem{agreement}[theorem]{Соглашение}
+\newtheorem{example}[theorem]{Пример}
+\newtheorem*{examples}{Примеры}
+\newtheorem*{questions}{Вопросы}
+\newtheorem*{question}{Вопрос}
+\newtheorem{definition}[theorem]{Определение}
+\newtheorem{problem}[theorem]{Задача}
+
+\numberwithin{equation}{section}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par\indent {\bfseries #1\@addpunct{.} }}{\qed}
+\makeatother
+
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\UT}{UT}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\diff}{diff}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\cosupp}{cosupp}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\height}{ht}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\PIexp}{PIexp}
+\newcommand{\hatotimes}{\mathbin{\widehat{\otimes}}}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Coker}{Coker}
+\renewcommand{\Im}{\mathop\mathrm{Im}}
+\DeclareMathOperator{\Coim}{Coim}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tor}{Tor}
+
+%%%%%%%%%%%%%%% Fancy symbol \No %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareRobustCommand{\No}{\ifmmode{\nfss@text{\textnumero}}\else\textnumero\fi} 
+
+
+%%%%%%%%%%%%%%% Pullbacks van Tim van der Linden %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newbox\skewpullbackbox
+\setbox\skewpullbackbox=\hbox{\xy 0;<1mm,0mm>: \POS(4,0)\ar@{-} (-4,0) \ar@{-} (8,4)
+	\endxy}
+\newcommand{\skewpullback}{\copy\skewpullbackbox}
+
+\newbox\skwepullbackbox
+\setbox\skwepullbackbox=\hbox{\xy 0;<1mm,0mm>: \POS(16,0)\ar@{-} (10,0) \ar@{-} (12,4)
+	\endxy}
+\newcommand{\skwepullback}{\copy\skwepullbackbox}
+
+\newbox\ksewpullbackbox
+\setbox\ksewpullbackbox=\hbox{\xy 0;<1mm,0mm>: \POS(0,-8)\ar@{-} (0,-4) \ar@{-} (4,-4)
+	\endxy}
+\newcommand{\ksewpullback}{\copy\ksewpullbackbox}
+
+\newbox\pullbackbox
+\setbox\pullbackbox=\hbox{\xy 0;<1mm,0mm>: \POS(4,0)\ar@{-} (0,0) \ar@{-} (4,4)
+	\endxy}
+\newcommand{\pullback}{\copy\pullbackbox}
+
+\newbox\pullbackabox
+\setbox\pullbackabox=\hbox{\xy 0;<1mm,0mm>: \POS(-4,-6)\ar@{-} (-8,-6) \ar@{-} (-4,-2)
+	\endxy}
+\newcommand{\pullbacka}{\copy\pullbackabox}
+
+\newbox\pullbackbbox
+\setbox\pullbackbbox=\hbox{\xy 0;<1mm,0mm>: \POS(-4,-4)\ar@{-} (-8,-4) \ar@{-} (-4,0)
+	\endxy}
+\newcommand{\pullbackb}{\copy\pullbackbbox}
+
+\newbox\pullbackcbox
+\setbox\pullbackcbox=\hbox{\xy 0;<1mm,0mm>: \POS(4,-7)\ar@{-} (0,-7) \ar@{-} (4,-3)
+	\endxy}
+\newcommand{\pullbackc}{\copy\pullbackcbox}
+
+
+\newbox\pullbackdbox
+\setbox\pullbackdbox=\hbox{\xy 0;<1mm,0mm>:\POS(-10,-6)\ar@{-} (-14,-6) \ar@{-} (-10,-2)
+	\endxy}
+\newcommand{\pullbackd}{\copy\pullbackdbox}
+
+
+\newbox\pushoutbox
+\setbox\pushoutbox=\hbox{\xy 0;<1mm,0mm>: \POS(0,4)\ar@{-} (0,0) \ar@{-} (4,4)
+	\endxy}
+\newcommand{\pushout}{\copy\pushoutbox}
+
+\newbox\pushoutabox
+\setbox\pushoutabox=\hbox{\xy 0;<1mm,0mm>: \POS(2,8)\ar@{-} (2,4) \ar@{-} (8,8)
+	\endxy}
+\newcommand{\pushouta}{\copy\pushoutabox}
+
+\addto\captionsrussian{% Replace "english" with the language you use
+  \renewcommand{\contentsname}%
+    {Содержание}%
+}
+
+
+\begin{document}
+
+{\fontsize{14pt}{18}\selectfont
+  
+  \thispagestyle{empty}
+  \begin{center}
+		
+		\vfill\vfill \ \\ {%\Large
+			МОСКОВСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ \\
+			имени М.В.~ЛОМОНОСОВА
+			
+			\medskip
+			
+			МЕХАНИКО-МАТЕМАТИЧЕСКИЙ ФАКУЛЬТЕТ
+
+
+		}
+
+
+
+{%\Large
+	\vfill\vfill\vfill\vfill\vfill\vfill\vfill {%\Large
+   
+		Отчёт о задаче №4
+		
+	}
+		
+		
+		\vfill{\Large
+        
+			\textbf{Удаление черных краев изображения} 
+		}
+		
+			
+
+			\vfill
+			\begin{flushright}
+				\begin{tabular}{r}
+                \\
+                \\
+                \\
+                \\
+                \\
+                \\
+                \\
+                \\
+                
+					Выполнила:\\
+студентка 223 группы \\
+Якшибаева Дарья Сергеевна
+					
+				\end{tabular}
+			\end{flushright}
+			
+		}
+		
+		\vfill\vfill\vfill\vfill 
+		
+		Москва
+		
+		 2025
+	\end{center}
+}
+
+    \newpage
+    \tableofcontents
+    \fontsize{14pt}{20pt}\selectfont
+    \newpage
+\pagestyle{plain}
+
+\section{Описание задачи}
+
+Задача состоит в написании программы на языке Python, которая обрезает черные края изображения. Ширина и высота изображения должны уменьшиться на размер обрезанных границ. В результате должно получиться изоображение без черных краев.
+
+%\newpage
+\section{Постановка задачи}
+
+Входные данные:
+\begin{itemize}
+\setlength{\itemindent}{2cm}
+Графический файл.\\
+Допустимые форматы: JPEG, PNG, BMP
+\end{itemize}
+
+Выходные данные:
+\begin{itemize}
+\setlength{\itemindent}{1cm}
+ Графический файл OutputFile (например, output.jpg) с обрезанными чёрными границами
+\end{itemize}
+
+Условия:
+\begin{itemize}
+\setlength{\itemindent}{2cm}
+ Если изображение не содержит чёрных границ, размеры выходного файла совпадают с входным.\\
+ Если все пиксели изображения чёрные, программа должна сохранить это же изображение без изменений.
+\end{itemize}
+
+
+
+\newpage
+\section{Реализация задачи}
+
+Под "чёрными краями" понимаются крайние строки/столбцы, полностью состоящие из пикселей с цветом (0, 0, 0-10).\\
+Используется библиотека Pillow (PIL).Изображение конвертируется в RGB-формат.\\
+
+
+Основные этапы
+\begin{itemize}
+\setlength{\itemindent}{2cm}
+\item Загрузка входного изображения\\
+ img = Image.open(sys.argv[1]) \\
+
+\itemПреобразование в массив пикселей\\
+pixels = np.array(img.convert('RGB'))\\
+\itemОпределение границ обрезки\\
+side = 0\\
+    while side < x and np.all(pixels[side] <= 10):\\
+    side += 1\\
+  
+    
+
+\itemВыполнение обрезки\\
+img.crop((left, top, right + 1, bottom + 1))\\
+\itemСохранение результата\\
+cropped.save(sys.argv[2])
+
+\end{itemize}
+
+\newpage
+\section{Примеры выполнения}
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.4\textwidth}
+    \includegraphics[width=\linewidth]{input2.jpg}
+    \caption{Исходное изображение}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.4\textwidth}
+    \includegraphics[width=\linewidth]{output2.jpg}
+    \caption{Результат обработки}
+\end{subfigure}
+\caption{Пример работы программы}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.4\textwidth}
+    \includegraphics[width=\linewidth]{input1.jpg}
+    \caption{Исходное изображение}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.4\textwidth}
+    \includegraphics[width=\linewidth]{output1.jpg}
+    \caption{Результат обработки}
+\end{subfigure}
+\caption{Пример работы программы}
+\end{figure}
+\section{Вывод}
+Программа успешно выполняет поставленную задачу по обработке изображений.
+
+
+
+
+
+\end{document}
